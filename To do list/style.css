@@ -1,0 +1,161 @@
+/* style.css */
+
+/* Reset + base */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+:root{
+  --bg: #0b1220;
+  --card: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.14);
+  --text: #e9eefc;
+  --muted: rgba(233,238,252,0.75);
+  --accent: #5dd6ff;
+  --danger: #ff5d6c;
+  --shadow: 0 12px 35px rgba(0,0,0,0.35);
+  --radius: 16px;
+}
+
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(900px 500px at 15% 10%, rgba(93,214,255,0.22), transparent 60%),
+    radial-gradient(900px 500px at 85% 20%, rgba(123,92,255,0.18), transparent 55%),
+    var(--bg);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+/* Card container */
+.container{
+  width: min(640px, 92vw);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+  backdrop-filter: blur(10px);
+}
+
+/* Title */
+.container h1{
+  margin: 0 0 14px;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  letter-spacing: 0.3px;
+}
+
+/* Label text "Add a new todo..." */
+.container{
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* Inputs */
+#idea{
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.18);
+  color: var(--text);
+  outline: none;
+}
+
+#idea::placeholder{ color: rgba(233,238,252,0.55); }
+
+#idea:focus{
+  border-color: rgba(93,214,255,0.55);
+  box-shadow: 0 0 0 4px rgba(93,214,255,0.12);
+}
+
+/* Buttons (Add + Remove All + X) */
+input[type="button"], button{
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.18);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.08s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+input[type="button"]:hover, button:hover{
+  border-color: rgba(93,214,255,0.45);
+  background: rgba(93,214,255,0.10);
+}
+
+input[type="button"]:active, button:active{
+  transform: translateY(1px);
+}
+
+/* Make the "add to list" button align nicely under input */
+#add{
+  margin-top: 10px;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(93,214,255,0.20), rgba(0,0,0,0.18));
+  border-color: rgba(93,214,255,0.35);
+}
+
+/* List */
+#list{
+  margin: 18px 0 14px;
+  padding: 0;
+  list-style: none;
+  color: var(--text);
+}
+
+/* First item "Topics:" */
+#list li:first-child{
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.12);
+  color: var(--muted);
+}
+
+/* Todo items */
+#list li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.14);
+}
+
+/* The X remove button inside each li */
+#list li button{
+  padding: 6px 10px;
+  border-radius: 10px;
+  border-color: rgba(255,93,108,0.35);
+  background: rgba(255,93,108,0.10);
+}
+
+#list li button:hover{
+  border-color: rgba(255,93,108,0.55);
+  background: rgba(255,93,108,0.16);
+}
+
+/* Remove All button (last button in container) */
+.container > button{
+  width: 100%;
+  border-color: rgba(255,93,108,0.28);
+  background: rgba(255,93,108,0.08);
+}
+
+.container > button:hover{
+  border-color: rgba(255,93,108,0.5);
+  background: rgba(255,93,108,0.14);
+}
+.done .todo-text{
+  text-decoration: line-through;
+  opacity: 0.65;
+}
